@@ -3,8 +3,6 @@ import librosa.display
 #from pydub import AudioSegment
 import matplotlib.pyplot as plt
 import numpy as np
-from scipy.io import wavfile
-from tempfile import mktemp
 from scipy.ndimage import maximum_filter
 
 

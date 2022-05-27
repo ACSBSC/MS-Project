@@ -5,5 +5,6 @@ import sys
 
 cmdargs = sys.argv
 
-df = cmdargs[2]
-song_file = [4]
+df = pd.read_csv (cmdargs[2]+'.csv')
+file_name = [4]
+
