@@ -5,8 +5,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 from scipy.ndimage import maximum_filter
 
-
-
 def hashing(cmap, song_name):
     
     hashes = {}
@@ -41,8 +39,6 @@ def hashing(cmap, song_name):
     
     return hashes
 
-
-
 def plot_constellation_map(Cmap, Y=None, xlim=None, ylim=None, title='',
                            xlabel='Time (sample)', ylabel='Frequency (bins)',
                            s=5, color='r', marker='o', figsize=(7, 3), dpi=72):
@@ -69,7 +65,6 @@ def plot_constellation_map(Cmap, Y=None, xlim=None, ylim=None, title='',
     ax.scatter(k, n, color=color, s=s, marker=marker)
     plt.tight_layout()
     return fig, ax, im
-
 
 def compute_constellation_map(Y, dist_freq=7, dist_time=7, thresh=0.01):
     # spectrogram dimensions
@@ -102,10 +97,11 @@ def compute_spectrogram(fn_wav, N=2048, H=1024, bin_max=128, frame_max=None):
     return Y
 
 def fingerprint(filename):
-    
-    song=filename.split(".")
+    song = filename.split("/")
+    song=song[-1].split(".")
+    #print(song)
     #song = song[1].split(".")
-    song_name=song[2]
+    song_name=song[-2]
     
     Y = compute_spectrogram(filename)
 
