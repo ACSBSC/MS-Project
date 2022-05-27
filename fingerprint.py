@@ -105,9 +105,9 @@ def compute_spectrogram(fn_wav, N=2048, H=1024, bin_max=128, frame_max=None):
 
 def fingerprint(filename):
     
-    song=filename.split(" ")
-    song = song[1].split(".")
-    song_name=song[0]
+    song=filename.split(".")
+    #song = song[1].split(".")
+    song_name=song[2]
     
     Y = compute_spectrogram(filename)
 
