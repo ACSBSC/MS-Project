@@ -14,17 +14,17 @@ file_path = "./"+file_name
 print()
 print("Scanning Test sample...")
 
-listOfFiles = list()
+'''listOfFiles = list()
 for (dirpath, dirnames, filenames) in os.walk(file_path):
-    listOfFiles += [os.path.join(dirpath, file) for file in filenames]
+    listOfFiles += [os.path.join(dirpath, file) for file in filenames]'''
 
 '''Total_files=0
 TP = 0
 FN = 0
 FP = 0'''
-random.shuffle(listOfFiles)
+#random.shuffle(listOfFiles)
 #for sample in listOfFiles:
-song_analysed = sample 
+song_analysed = file_path 
 #print(song_analysed)
 '''if Total_files>15:
     break
@@ -84,7 +84,7 @@ for song_index, matches in dict.items():
 scores = list(sorted(scores.items(), key=lambda x: x[1][1], reverse=True))                 
 
 scores = scores[:5]
-if len(scores)>0:
+'''if len(scores)>0:
     name_song=name.split("_")
     sn=name_song[1:len(name_song)-1]
     for song_id, score in scores:
@@ -94,7 +94,7 @@ if len(scores)>0:
         else:
             FP+=1
 else:
-    FN+=1
+    FN+=1'''
             
     
     
