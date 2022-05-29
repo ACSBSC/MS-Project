@@ -4,7 +4,7 @@ import librosa.display
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.ndimage import maximum_filter
-import hashlib
+
 
 def hashing(cmap, song_name):
     
@@ -41,6 +41,7 @@ def hashing(cmap, song_name):
     
     return hashes
 
+#the next function is to plt the constellation map
 def plot_constellation_map(Cmap, Y=None, xlim=None, ylim=None, title='',
                            xlabel='Time (sample)', ylabel='Frequency (bins)',
                            s=5, color='r', marker='o', figsize=(7, 3), dpi=72):
@@ -87,6 +88,7 @@ def compute_spectrogram(fn_wav, N=2048, H=1024, bin_max=128, frame_max=None):
         frame_max = X.shape[0]
     Y = np.abs(X[:bin_max, :frame_max])
     
+    #for plotting the spectogram, uncomment this section
     '''# convert the slices to amplitude
     Xdb = librosa.amplitude_to_db(abs(X))
 
@@ -99,7 +101,7 @@ def compute_spectrogram(fn_wav, N=2048, H=1024, bin_max=128, frame_max=None):
     return Y
 
 def fingerprint(filename):
-    
+    #splitting the filepath string to obtain the name of the song
     if '\\' in filename:
         song = filename.split("\\")
     else:
@@ -117,6 +119,7 @@ def fingerprint(filename):
     for i in range(100):
         Cmap = compute_constellation_map(Y, dist_freq, dist_time)
 
+    #for plotting the constellation map, uncomment this section
     '''title=r'Constellation map using $\kappa=%d$, $\tau=%d$' % (dist_freq, dist_time)
     fig, ax, im = plot_constellation_map(Cmap, np.log(1 + 1 * Y), 
                                      color='r', s=30, title=title)
