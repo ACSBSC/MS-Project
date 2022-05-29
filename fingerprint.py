@@ -18,7 +18,7 @@ def hashing(cmap, song_name):
     time, frequency = np.argwhere(cmap == 1).T
 
     for idx1 in range(len(time)):
-        for idx2 in range(idx1, idx1+10):
+        for idx2 in range(idx1, idx1+100):
             if idx2>=len(time):
                 break
             
