@@ -2,6 +2,8 @@ import fingerprint as fp
 import pandas as pd
 import os
 import sys
+import metrics
+import random
 
 cmdargs = sys.argv
 
@@ -12,13 +14,21 @@ file_path = "./"+file_name
 print()
 print("Scanning Test sample...")
 
-'''listOfFiles = list()
+listOfFiles = list()
 for (dirpath, dirnames, filenames) in os.walk(file_path):
     listOfFiles += [os.path.join(dirpath, file) for file in filenames]
 
-for sample in listOfFiles:'''
-song_analysed = file_path 
+'''Total_files=0
+TP = 0
+FN = 0
+FP = 0'''
+random.shuffle(listOfFiles)
+#for sample in listOfFiles:
+song_analysed = sample 
 #print(song_analysed)
+'''if Total_files>15:
+    break
+Total_files+=1'''
 
 hashes = fp.fingerprint(song_analysed)
 
@@ -74,9 +84,26 @@ for song_index, matches in dict.items():
 scores = list(sorted(scores.items(), key=lambda x: x[1][1], reverse=True))                 
 
 scores = scores[:5]
- 
+if len(scores)>0:
+    name_song=name.split("_")
+    sn=name_song[1:len(name_song)-1]
+    for song_id, score in scores:
+        if sn[0] in song_id:
+            TP+=1
+    
+        else:
+            FP+=1
+else:
+    FN+=1
+            
+    
+    
 print() 
 print(f"File name {name}:")                
 for song_id, score in scores:
     print(f"{song_id}: Score of {score[1]}")               
                 
+'''print("Total files: ", Total_files)
+print("TP: ", TP)
+print("FP: ", FP)
+print("FN: ", FN)'''
