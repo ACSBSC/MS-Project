@@ -13,7 +13,7 @@ def hashing(cmap, song_name):
     # Use this for binning - 45_000 is slighlty higher than the maximum
     # frequency rate of the given songs
     upper_frequency = 45_000 
-    frequency_bits = 10
+    frequency_bits = 16
     
     time, frequency = np.argwhere(cmap == 1).T
 
