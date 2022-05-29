@@ -111,7 +111,7 @@ def fingerprint(filename):
     
     Y = compute_spectrogram(filename)
 
-    dist_freq = 11  # kappa: neighborhood in frequency direction
+    dist_freq = 16  # kappa: neighborhood in frequency direction
     dist_time = 3   # tau: neighborhood in time direction
     
     for i in range(100):
