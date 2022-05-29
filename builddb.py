@@ -7,7 +7,7 @@ import sys
 cmdargs = sys.argv
 
 listOfFiles = list()
-#print("Scanning Songs...")
+print("Scanning Songs...")
 
 for i in range(2, len(cmdargs)-2):
     folder = cmdargs[i]
@@ -17,7 +17,7 @@ for i in range(2, len(cmdargs)-2):
         listOfFiles += [os.path.join(dirpath, file) for file in filenames]
 
 hashes = {}
-#print("Obtaining Fingerprints...")
+print("Obtaining Fingerprints...")
 for file in listOfFiles:
     filename = file
     hashes_temp=fp.fingerprint(filename)
@@ -30,4 +30,4 @@ df = df.rename(columns = {'index':'fingerprint'})
 
 df.to_csv(str(cmdargs[len(cmdargs)-1])+'.csv', index=False)
 
-#print("Fingerprint Database saved!")
+print("Fingerprint Database saved!")
