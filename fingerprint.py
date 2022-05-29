@@ -4,6 +4,7 @@ import librosa.display
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.ndimage import maximum_filter
+import hashlib
 
 def hashing(cmap, song_name):
     
@@ -34,6 +35,7 @@ def hashing(cmap, song_name):
     
             # Produce a 32 bit hash
             # Use bit shifting to move the bits to the correct location
+            
             hash = int(freq_binned1) | (int(freq_binned2) << 10) | (int(diff_time) << 20)
             hashes[hash] = (time[idx1], song_name)
     
@@ -97,7 +99,11 @@ def compute_spectrogram(fn_wav, N=2048, H=1024, bin_max=128, frame_max=None):
     return Y
 
 def fingerprint(filename):
-    song = filename.split("/")
+    
+    if '\\' in filename:
+        song = filename.split("\\")
+    else:
+        song = filename.split("/")
     song=song[-1].split(".")
     #print(song)
     #song = song[1].split(".")
