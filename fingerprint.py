@@ -10,9 +10,9 @@ def hashing(cmap, song_name):
     
     hashes = {}
     
-    # Use this for binning - 23_000 is slighlty higher than the maximum
-    # frequency that can be stored in the .wav files, 22.05 kHz
-    upper_frequency = 23_000 
+    # Use this for binning - 45_000 is slighlty higher than the maximum
+    # frequency rate of the given songs
+    upper_frequency = 45_000 
     frequency_bits = 10
     
     time, frequency = np.argwhere(cmap == 1).T
@@ -77,7 +77,7 @@ def compute_constellation_map(Y, dist_freq=7, dist_time=7, thresh=0.01):
 
 def compute_spectrogram(fn_wav, N=2048, H=1024, bin_max=128, frame_max=None):
     # sr == sampling rate 
-    x, sr = librosa.load(fn_wav, sr=22050)
+    x, sr = librosa.load(fn_wav, sr=44100)
     x_duration = len(x)/sr
     # stft is short time fourier transform
     X = librosa.stft(x, n_fft=N, hop_length=H, win_length=N, window='hanning')
